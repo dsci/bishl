@@ -10,4 +10,9 @@ describe "FormHelper" do
     output.should include("Pos")
   end
 
+  it "should render an info message if no data could be fetched" do
+    output = bishl_standings({:season => "2009", :cs => "1BLN", :css => {:table_class => "foo"}})
+    output.should == "<div class=\"foo\">No data found</div>"
+  end
+
 end

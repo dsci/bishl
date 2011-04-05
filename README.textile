@@ -97,6 +97,4 @@ h2. Contributing to bishl
 
 h2. Copyright
 
-Copyright (c) 2011 Daniel Schmidt. See LICENSE.txt for
-further details.
-
+Copyright (c) 2011 Daniel Schmidt. See LICENSE.txt for further details.

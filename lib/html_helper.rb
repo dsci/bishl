@@ -7,15 +7,22 @@ module Bishl
   #
     def bishl_standings(opt={})
     begin
-      opt[:table_class] = "" unless opt.has_key?(:table_class)
-      opt[:odd_class] = "" unless opt.has_key?(:odd_class)
-      opt[:even_class] = "" unless opt.has_key?(:even_class)
+      table_class =  ""
+      odd_class = ""
+      even_class = ""
+      if opt.has_key?(:css)
+        table_class = opt[:css][:table_class] if opt[:css].has_key?(:table_class)
+        odd_class = opt[:css][:odd_class] if opt[:css].has_key?(:odd_class)
+        even_class = opt[:css][:even_class] if opt[:css].has_key?(:even_class)
+      end
 
       parser = Bishl::Parser.new
       data = parser.parse_standings(:season => opt[:season], :cs => opt[:cs])
-      puts data.size
+
+      return no_data_fetch(table_class) if data.empty?
+
       head = <<-HTML
-        <table class="#{opt[:table_class]}">
+        <table class="#{table_class}">
           <thead>
             <tr>
               <th>Pos</th>
@@ -38,7 +45,7 @@ module Bishl
       body = "<tbody>"
       data.each do |entry|
         body += <<-HTML
-          <tr class="#{opt[css_klass_for_line(entry.position)]}">
+          <tr class="#{css_klass_for_line({:index => entry.position, :even => even_class, :odd => odd_class})}">
             <td>#{entry.position}</td>
             <td>#{entry.team.teamname}</td>
             <td>#{entry.team.gamesplayed}</td>
@@ -60,11 +67,17 @@ module Bishl
       "#{head}#{body}"
     end
     rescue => e
-      "<div></div>"
+      no_data_fetch(opt[:table_class])
     end
 
-    def css_klass_for_line(pos)
-      pos.to_i.even? ? :even_class : :odd_class
+    private
+
+    def css_klass_for_line(opt={})
+      opt[:pos].to_i.even? ? opt[:even] : opt[:odd]
+    end
+
+    def no_data_fetch(css_klass)
+      "<div class=\"#{css_klass}\">No data found</div>"
     end
 
   end
