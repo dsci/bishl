@@ -21,4 +21,18 @@ describe "FormHelper" do
     output.should == "<div class=\"foo\">No data found</div>"
   end
 
+  it "should return even css klass variable if position is an even number" do
+
+    Bishl::HTMLHelper.class_eval do
+      public :css_klass_for_line
+    end
+
+    even_class = "even"
+    odd_class = "odd"
+    result = css_klass_for_line({:index => 2, :even => even_class, :odd => odd_class})
+    result.should == even_class
+    result2 = css_klass_for_line({:index => 1, :even => even_class, :odd => odd_class})
+    result2.should == odd_class
+  end
+
 end

@@ -33,7 +33,7 @@ module Bishl
     private
 
     def css_klass_for_line(opt={})
-      opt[:pos].to_i.even? ? opt[:even] : opt[:odd]
+      opt[:index].to_i.even? ? opt[:even] : opt[:odd]
     end
 
     def no_data_fetch(css_klass)
@@ -42,7 +42,7 @@ module Bishl
 
     def small(data,table_class,odd_class,even_class)
       head = <<-HTML
-        <table class="#{table_class}">
+        <table class="#{table_class}" border="0" cellpadding="0" cellspacing="0">
           <thead>
             <tr>
               <th>Pos</th>
@@ -69,7 +69,7 @@ module Bishl
 
     def large(data,table_class,odd_class,even_class)
       head = <<-HTML
-        <table class="#{table_class}">
+        <table class="#{table_class}" border="0" cellpadding="0" cellspacing="0">
           <thead>
             <tr>
               <th>Pos</th>
