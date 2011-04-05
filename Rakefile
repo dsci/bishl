@@ -15,10 +15,36 @@ Jeweler::Tasks.new do |gem|
   gem.name = "bishl"
   gem.homepage = "http://github.com/dsci/bishl"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Ruby wrapper for bishl.de xml api.}
+  gem.description = %Q{Ruby wrapper for bishl.de xml api.}
   gem.email = "dsci@code79.net"
-  gem.authors = ["Daniel"]
+  gem.authors = ["Daniel Schmidt"]
+  gem.files = [
+    ".document",
+    ".rspec",
+    "Gemfile",
+    "LICENSE.txt",
+    "README.textile",
+    "Rakefile",
+    "VERSION",
+    "lib/bishl.rb",
+    "lib/parser.rb",
+    "lib/params_builder.rb",
+    "lib/url.rb",
+    "lib/errors.rb",
+    "lib/schedule_line.rb",
+    "lib/schedule_team.rb",
+    "lib/html_helper.rb",
+    "rails/init.rb",
+    "init.rb",
+    "spec/bishl_spec.rb",
+    "spec/spec_helper.rb",
+    "spec/params_builder_spec.rb",
+    "spec/form_helper_spec.rb",
+    "spec/parser_spec.rb",
+    "spec/url_spec.rb"
+  ]
+  gem.add_runtime_dependency "nokogiri"
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
   #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
