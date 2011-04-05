@@ -4,6 +4,6 @@ require "bishl"
 
 unless defined?(ApplicationHelper).nil?
   ApplicationHelper.class_eval do
-    include Bishl::HTMLHelper
+    ActionView::Base.send :include, BISHL::HTMLHelper
   end
 end
