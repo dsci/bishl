@@ -26,10 +26,31 @@ simple:
 require "rubygems"
 require "bishl"
 
-@parser = Bishl::Parser.new
-@parser.parse_standings(:season => "2010", :cs => "LLA")
+@parser = BISHL.standings(:season => "2010", :cs => "LLA")
 </code>
 </pre>
+
+Same for parsing schedule.
+
+<pre>
+<code>
+require "rubygems"
+require "bishl"
+
+@parser = BISHL.schedule(:season => "2010", :cs => "LLA", :team => 74)
+</code>
+</pre>
+
+Note the additional team id.
+
+It also gives you the opportunity to fetch the team's logo:
+
+<pre>
+<code>
+    BISHL.logo_for(:team => 74)
+</code>
+
+which returns an url.
 
 *Sinatra*
 

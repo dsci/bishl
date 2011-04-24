@@ -1,7 +1,8 @@
 module Bishl
   class ScheduleTeam < Struct.new(:teamname, :wins,:losses, :ties,:otwins,
                                   :otlosses,:sowins,:points,:goalsfor,
-                                  :goalsagainst,:gamesplayed,:solosses)
+                                  :goalsagainst,:gamesplayed,:solosses,
+                                  :schedule)
 
     class << self
 

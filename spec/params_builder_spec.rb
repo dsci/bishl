@@ -16,6 +16,12 @@ describe "ParamsBuilder" do
       result.should == expected
     end
 
+    it "should build correct link for 2011 and Landesliga and given Team" do
+      expected = "?season=2011&cs=LLA&team=74"
+      result = Bishl::ParamsBuilder.build_link({:season => "2011", :cs => "LLA", :team => "74"})
+      result.should == expected
+    end
+
   end
 
   context "for league standings" do

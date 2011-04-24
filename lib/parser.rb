@@ -7,7 +7,7 @@ module Bishl
     def parse_standings(opt={})
       begin
         url = ParamsBuilder.build_link(opt)
-        xml = fetch(url)
+        xml = fetch(url,"standings")
         data = []
         xml.xpath("//team").each do |inf|
         c = ScheduleLine.new
@@ -31,10 +31,33 @@ module Bishl
       end
     end
 
+    def parse_schedule(opt={})
+      begin
+        url = ParamsBuilder.build_link(opt)
+        xml = fetch(url,"schedule")
+        data = []
+        xml.xpath("//game").each do |line|
+          g = Game.new
+          line.children.each do |child|
+            #puts child.text if child.name.match(/gameid/)
+            if child.name.match(/startdate/)
+              g.send("#{child.name}=", Chronic.parse(child.text))
+            else
+              g.send("#{child.name}=", child.text) if g.respond_to?(child.name.to_sym)
+            end
+          end
+          data << g
+        end
+        return data
+      rescue => e
+        raise e
+      end
+    end
+
     private
 
-    def fetch(url)
-      uri = Bishl::Url.source << url
+    def fetch(url,type)
+      uri = Bishl::Url.source(type) << url
       Nokogiri.XML(open(uri).read)
     end
 

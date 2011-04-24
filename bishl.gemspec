@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{bishl}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Daniel Schmidt"]
-  s.date = %q{2011-04-04}
+  s.date = %q{2011-04-24}
   s.description = %q{Ruby wrapper for bishl.de xml api.}
   s.email = %q{dsci@code79.net}
   s.extra_rdoc_files = [
@@ -26,7 +26,9 @@ Gem::Specification.new do |s|
     "VERSION",
     "init.rb",
     "lib/bishl.rb",
+    "lib/bishl_klass.rb",
     "lib/errors.rb",
+    "lib/game.rb",
     "lib/html_helper.rb",
     "lib/params_builder.rb",
     "lib/parser.rb",
@@ -34,7 +36,6 @@ Gem::Specification.new do |s|
     "lib/schedule_team.rb",
     "lib/url.rb",
     "rails/init.rb",
-    "spec/bishl_spec.rb",
     "spec/form_helper_spec.rb",
     "spec/params_builder_spec.rb",
     "spec/parser_spec.rb",
@@ -47,7 +48,6 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.6.2}
   s.summary = %q{Ruby wrapper for bishl.de xml api.}
   s.test_files = [
-    "spec/bishl_spec.rb",
     "spec/form_helper_spec.rb",
     "spec/params_builder_spec.rb",
     "spec/parser_spec.rb",
@@ -61,27 +61,36 @@ Gem::Specification.new do |s|
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<nokogiri>, [">= 0"])
       s.add_runtime_dependency(%q<httparty>, [">= 0"])
+      s.add_runtime_dependency(%q<chronic>, [">= 0"])
       s.add_development_dependency(%q<rspec>, ["~> 2.3.0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.5.2"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_development_dependency(%q<vcr>, [">= 0"])
+      s.add_development_dependency(%q<webmock>, [">= 0"])
       s.add_runtime_dependency(%q<nokogiri>, [">= 0"])
     else
       s.add_dependency(%q<nokogiri>, [">= 0"])
       s.add_dependency(%q<httparty>, [">= 0"])
+      s.add_dependency(%q<chronic>, [">= 0"])
       s.add_dependency(%q<rspec>, ["~> 2.3.0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
       s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<vcr>, [">= 0"])
+      s.add_dependency(%q<webmock>, [">= 0"])
       s.add_dependency(%q<nokogiri>, [">= 0"])
     end
   else
     s.add_dependency(%q<nokogiri>, [">= 0"])
     s.add_dependency(%q<httparty>, [">= 0"])
+    s.add_dependency(%q<chronic>, [">= 0"])
     s.add_dependency(%q<rspec>, ["~> 2.3.0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
     s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<vcr>, [">= 0"])
+    s.add_dependency(%q<webmock>, [">= 0"])
     s.add_dependency(%q<nokogiri>, [">= 0"])
   end
 end
