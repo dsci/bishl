@@ -4,8 +4,16 @@ A tiny little ruby wrapper around the XML api of www.bishl.de .
 
 h2. Installation
 
-Installation via Bundler is easy to setup though it's not offical released.
+Installation via Bundler is easy to setup.
 Put the following line to your Gemfile:
+
+<pre>
+<code>
+gem "bishl"
+</code>
+</pre>
+
+To ride "cutting edge" use github as gem source:
 
 <pre>
 <code>
@@ -49,6 +57,7 @@ It also gives you the opportunity to fetch the team's logo:
 <code>
     BISHL.logo_for(:team => 74)
 </code>
+</pre>
 
 which returns an url.
 
