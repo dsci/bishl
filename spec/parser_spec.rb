@@ -20,30 +20,42 @@ describe "Parser" do
       parse.call.should have(11).items
     end
 
-    it "parse the next game for given team" do
-      parse = proc {BISHL.next_game_for(:season => "2010", :cs => "LLA",  :team => "74")}
-      parse.call.should have(0).items
+    context "the next game" do
 
-      parse = proc {BISHL.next_game_for(:season => "2011", :cs => "LLA",  :team => "74")}
-      parse.call.should have(1).items
-    end
+      it "parses for given team" do
+        parse = proc {BISHL.next_game_for(:season => "2010", :cs => "LLA",  :team => "74")}
+        parse.call.should have(0).items
 
-    context "stripped" do
-
-      it "parse the next game for given team and returns it as a single array" do
         parse = proc {BISHL.next_game_for(:season => "2011", :cs => "LLA",  :team => "74")}
         parse.call.should have(1).items
       end
 
-    end
+      context "stripped" do
 
-    context "not stripped" do
+        it "parse the next game for given team and returns it as a single array" do
+          parse = proc {BISHL.next_game_for(:season => "2011", :cs => "LLA",  :team => "74")}
+          parse.call.should have(1).items
+        end
 
-      it "parse the next game for given team and returns it as an array" do
-        parse = proc {BISHL.next_game_for(:season => "2011", :cs => "LLA",  :team => "74", :strip => false)}
-        parse.call.should_not have(1).items
       end
 
+      context "not stripped" do
+
+        it "parse the next game for given team and returns it as an array" do
+          parse = proc {BISHL.next_game_for(:season => "2011", :cs => "LLA",  :team => "74", :strip => false)}
+          parse.call.should_not have(1).items
+        end
+
+      end
+    end
+
+    context "the last game" do
+      it "parses for given team" do
+        parse = proc{BISHL.last_game_for(:season => "2010", :cs => "LLA",  :team => "74")}
+        lambda{parse.call}.should_not raise_error
+        parse.call.should have(1).items
+        parse.call.first.awayteam.should == "Galabau"
+      end
     end
 
     context "logo" do
