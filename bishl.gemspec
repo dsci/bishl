@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Daniel Schmidt"]
-  s.date = %q{2011-04-24}
+  s.date = %q{2011-06-24}
   s.description = %q{Ruby wrapper for bishl.de xml api.}
   s.email = %q{dsci@code79.net}
   s.extra_rdoc_files = [
