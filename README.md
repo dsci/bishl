@@ -17,9 +17,9 @@ To ride "cutting edge" use github as gem source:
 gem "bishl", :git => "git://github.com/dsci/bishl.git"
 ```
 
-h2. Implementations
+## Implementations
 
-*Pure Ruby*
+**Pure Ruby**
 
 For Ruby implementation take a closer look to the RSpec files. Due to the fact that the XML API of the BISHL
 website currently only supports standings for several years, getting involved with the bishl Ruby gem is very
@@ -67,7 +67,7 @@ It also gives you the opportunity to fetch the team's logo:
 
 which returns an url.
 
-*Sinatra*
+**Sinatra**
 
 In your Sinatra file:
 
@@ -87,13 +87,12 @@ In your View:
                                        :even_class => "myEven"}
                        })%>
 ```
-</pre>
 
-*Rails*
+**Rails**
 
 For rails just include the gem to your Gemfile and and follow the instruction at the Sinatra/View section.
 
-h2. Possible combinations for season and league type
+## Possible combinations for season and league type
 
 The creator of the BISHL website (bishl.de), Marian Strüby compiles an overview of possible combinations:
 
