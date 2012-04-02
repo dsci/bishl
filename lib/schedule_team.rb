@@ -1,8 +1,26 @@
 module Bishl
-  class ScheduleTeam < Struct.new(:teamname, :wins,:losses, :ties,:otwins,
-                                  :otlosses,:sowins,:points,:goalsfor,
-                                  :goalsagainst,:gamesplayed,:solosses,
-                                  :schedule)
+  class ScheduleTeam 
+
+    include Virtus
+
+    attribute :teamname, String
+    attribute :wins, Integer
+    attribute :losses, Integer
+    attribute :ties, Integer
+    attribute :otwins, Integer
+    attribute :otlosses, Integer
+    attribute :sowins, Integer
+    attribute :points, Integer
+    attribute :goalsfor, Integer
+    attribute :goalsagainst, Integer
+    attribute :gamesplayed, Integer
+    attribute :solosses, Integer
+
+    attr_accessor :schedule
+
+    def hashify
+      self.attributes.merge!({:goals_diff => self.goals_diff})
+    end
 
     class << self
 

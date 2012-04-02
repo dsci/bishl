@@ -3,6 +3,7 @@ require 'open-uri'
 require "nokogiri"
 require "httparty"
 require "chronic"
+require "virtus"
 
 #Dir[File.expand_path(File.join(File.dirname(__FILE__),'lib','**','*.rb'))].each {|f| require f}
 require File.dirname(__FILE__) + "/errors"

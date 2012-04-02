@@ -47,7 +47,7 @@ class BISHL
         found.attributes.each do |attr|
           if attr.include?("src")
             logo_path = "#{Bishl::Url.base}/#{attr.last.value}"
-            logo_path
+            #logo_path
             return logo_path
           end
         end
@@ -68,8 +68,8 @@ class BISHL
       games = self.class.schedule(opt)
       result = []
       games.each do |game|
-        result << game if game.date >= Time.now if match_next
-        result << game if game.date <= Time.now if match_last
+        result << game if game.date >= DateTime.now if match_next
+        result << game if game.date <= DateTime.now if match_last
       end
       if strip and match_next
         return [result.first] unless result.empty?

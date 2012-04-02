@@ -1,10 +1,19 @@
 module Bishl
-  class ScheduleLine < Struct.new(:position)
+  class ScheduleLine
+
+    include Virtus
+
+    attribute :position, :Integer
+
 
     attr_accessor :team
     
     def initialize
       @team = ScheduleTeam.new
+    end
+
+    def hashify
+      self.attributes.merge!({:team => @team.attributes})
     end
     
     def method_missing(method, *arguments, &block)

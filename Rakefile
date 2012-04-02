@@ -46,6 +46,16 @@ Jeweler::Tasks.new do |gem|
     "spec/url_spec.rb"
   ]
   gem.add_runtime_dependency "nokogiri"
+  gem.add_runtime_dependency "httparty"
+  gem.add_runtime_dependency "virtus"
+  gem.add_runtime_dependency "bundler"
+  gem.add_runtime_dependency "chronic"
+
+  gem.add_development_dependency "rspec", "~> 2.3.0"
+  gem.add_development_dependency "vcr"
+  gem.add_development_dependency "fuubar"
+  gem.add_development_dependency "webmock"
+  gem.add_development_dependency "jeweler"
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
   #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
